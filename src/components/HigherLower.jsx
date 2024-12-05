@@ -1,12 +1,22 @@
 // RandomArtistGame.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useRandomArtists from '../hooks/userRandomArtist';
 
 const RandomArtistGame = () => {
-  const { artists, loading, error } = useRandomArtists(); 
+  const { artists, loading, error, refetch } = useRandomArtists(); // Usamos el hook para obtener artistas
 
-  const [result, setResult] = useState(null); 
-  const [score, setScore] = useState(0); 
+  const [firstArtist, setFirstArtist] = useState(null); // Artista inicial
+  const [secondArtist, setSecondArtist] = useState(null); // Artista que se actualizará
+  const [result, setResult] = useState(null);
+  const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    if (artists.length > 0) {
+      // Si tenemos los artistas, asignamos el primer y segundo artista
+      setFirstArtist(artists[0]);
+      setSecondArtist(artists[1]);
+    }
+  }, [artists]); // Solo se ejecuta cuando artistas se actualiza
 
   if (loading) {
     return <div>Cargando artistas aleatorios...</div>;
@@ -16,17 +26,19 @@ const RandomArtistGame = () => {
     return <div>{error}</div>;
   }
 
- 
   const handleGuess = (chosenArtist) => {
-    const correctAnswer = artists[0].followers > artists[1].followers ? artists[0] : artists[1];
+    // Definir cuál es la respuesta correcta
+    const correctAnswer = firstArtist.followers > secondArtist.followers ? firstArtist : secondArtist;
+
+    // Si la respuesta es correcta, aumentamos el puntaje y mostramos el resultado
     if (chosenArtist === correctAnswer) {
       setResult('¡Correcto!');
-      setScore(score + 1); 
+      setScore(score + 1);
+      // Solo actualizamos el segundo artista si se acierta
+      refetch(); // Traemos un nuevo segundo artista para la comparación
     } else {
       setResult('¡Incorrecto! La respuesta correcta era ' + correctAnswer.name);
     }
-
- 
   };
 
   return (
@@ -34,35 +46,34 @@ const RandomArtistGame = () => {
       <h1>¿Quién tiene más oyentes?</h1>
 
       <div style={artistStyle}>
-        {artists && (
+        {firstArtist && secondArtist && (
           <>
             <div>
               <img
-                src={artists[0].image}
-                alt={artists[0].name}
+                src={firstArtist.image}
+                alt={firstArtist.name}
                 style={imageStyle}
               />
-              <h2>{artists[0].name}</h2>
-              <p><strong>Géneros:</strong> {artists[0].genres}</p>
-              <p><strong>Oyentes:</strong> {artists[0].followers.toLocaleString()}</p>
+              <h2>{firstArtist.name}</h2>
+              <p><strong>Géneros:</strong> {firstArtist.genres}</p>
+              <p><strong>Oyentes:</strong> {firstArtist.followers.toLocaleString()}</p>
             </div>
             <p>vs</p>
             <div>
               <img
-                src={artists[1].image}
-                alt={artists[1].name}
+                src={secondArtist.image}
+                alt={secondArtist.name}
                 style={imageStyle}
               />
-              <h2>{artists[1].name}</h2>
-              <p><strong>Géneros:</strong> {artists[1].genres}</p>
-              <p><strong>Oyentes:</strong> {artists[1].followers.toLocaleString()}</p>
+              <h2>{secondArtist.name}</h2>
+              <p><strong>Géneros:</strong> {secondArtist.genres}</p>
+              <p><strong>Oyentes:</strong> {secondArtist.followers.toLocaleString()}</p>
             </div>
 
             <div>
-              <button onClick={() => handleGuess(artists[0])}>Elegir {artists[0].name}</button>
-              <button onClick={() => handleGuess(artists[1])}>Elegir {artists[1].name}</button>
+              <button onClick={() => handleGuess(firstArtist)}>Elegir {firstArtist.name}</button>
+              <button onClick={() => handleGuess(secondArtist)}>Elegir {secondArtist.name}</button>
             </div>
-
 
             {result && (
               <div style={resultStyle}>

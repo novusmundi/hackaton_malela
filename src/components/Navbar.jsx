@@ -13,11 +13,12 @@ const Navbar = () => {
           <Link to="/artist" style={linkStyle}>Artistas</Link>
         </li>
         <li style={listItemStyle}>
-          <Link to="/genres" style={linkStyle}>Géneros</Link>
-        </li>
-        <li style={listItemStyle}>
           <Link to="/podcast" style={linkStyle}>Podcasts</Link>
         </li>
+        <li style={listItemStyle}>
+          <Link to="/games/higherlower" style={linkStyle}>Juegos</Link>
+        </li>
+       
       </ul>
     </nav>
   );
