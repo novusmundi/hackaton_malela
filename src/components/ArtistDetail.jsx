@@ -29,20 +29,20 @@ const ArtistDetail = () => {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <Row gutter={16} align="top">
- 
-        <Col xs={24} sm={12} md={12}>
+    <div style={{ padding: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <Row gutter={16} justify="center" align="top">
+      
+        <Col xs={24} sm={12} md={8}>
           <Card
             hoverable
             cover={<img alt={artist.name} src={artist.images[0]?.url} />}
-            style={{ width: '100%' }}
+            style={{ width: '100%', maxWidth: '350px', margin: '0 auto' }}
           >
-            <Title level={2}>{artist.name}</Title>
+            <Title level={3} style={{ textAlign: 'center' }}>{artist.name}</Title>
             <Text strong>Seguidores:</Text>
-            <p>{artist.followers.toLocaleString()}</p>
+            <p style={{ textAlign: 'center' }}>{artist.followers.toLocaleString()}</p>
             <Text strong>Género:</Text>
-            <p>{artist.genres.join(', ')}</p>
+            <p style={{ textAlign: 'center' }}>{artist.genres.join(', ')}</p>
             <Button
               type="primary"
               href={artist.external_urls.spotify}
@@ -55,22 +55,22 @@ const ArtistDetail = () => {
           </Card>
         </Col>
 
-        <Col xs={24} sm={12} md={12}>
-          <div>
-            <Title level={3}>Escuchar las canciones populares</Title>
-            {artist.top_tracks.map((track) => (
-              <div key={track.id} style={{ marginBottom: '20px', textAlign: 'center' }}>
-                <h4>{track.name}</h4>
+    
+        <Col xs={24} sm={12} md={8}>
+          <div style={{ textAlign: 'center' }}>
+            {artist.top_tracks.length > 0 && (
+              <div style={{ marginBottom: '20px' }}>
+                <h4>{artist.top_tracks[0].name}</h4>
                 <iframe
-                  src={`https://open.spotify.com/embed/track/${track.id}`}
+                  src={`https://open.spotify.com/embed/track/${artist.top_tracks[0].id}`}
                   width="300"
                   height="80"
                   frameBorder="0"
                   allow="encrypted-media"
-                  title={`Spotify Player: ${track.name}`}
+                  title={`Spotify Player: ${artist.top_tracks[0].name}`}
                 />
               </div>
-            ))}
+            )}
           </div>
         </Col>
       </Row>
