@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import './App.css'
 import PodcastDetailPage from './components/PodcastDetail';
 import RandomArtist from './components/HigherLower';
+import GuessSongTitleGame from './components/GuessSongTitleGame';
 
 
 
@@ -25,6 +26,7 @@ function App() {
       <Route path="/podcast" element={<PodcastPage />} />
       <Route path="/podcast/:podcastId" element={<PodcastDetailPage />} />
       <Route path="/games/higherlower" element={<RandomArtist/>} />
+      <Route path="/games/guesssongtitle" element={<GuessSongTitleGame/>} />
     
     </Routes>
   </Router>
