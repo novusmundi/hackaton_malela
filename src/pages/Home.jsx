@@ -1,24 +1,22 @@
-
+import backgroundImage from '../assets/Spotify-x-TV_Own-the-Living-Room-Project_FTR-Header_1440x820_02-1440x733.jpg'
 
 const Home = () => {
   return (
     <div style={homeStyle}>
-      <h1>Bienvenido a la App de Música y Podcasts</h1>
-      <p>Explora artistas, géneros musicales y podcasts populares.</p>
-
+    
      
     </div>
   );
 };
-
-// Estilos sencillos para la página Home
 const homeStyle = {
   textAlign: 'center',
-  padding: '50px',
-  backgroundColor: '#f5f5f5',
+  backgroundImage: `url(${backgroundImage})`, 
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
   height: '100vh',
+  margin: 0,
+  padding: 0,
+  color: 'white',
 };
-
-
-
 export default Home;

@@ -1,50 +1,36 @@
-// Navbar.jsx
-
-import { Link } from 'react-router-dom'; // Para usar enlaces de navegación
+import { Menu } from 'antd'; 
+import { Link } from 'react-router-dom'; 
 
 const Navbar = () => {
   return (
-    <nav style={navbarStyle}>
-      <ul style={listStyle}>
-      <li style={listItemStyle}>
-          <Link to="/" style={linkStyle}>Home</Link>
-        </li>
-        <li style={listItemStyle}>
-          <Link to="/artist" style={linkStyle}>Artistas</Link>
-        </li>
-        <li style={listItemStyle}>
-          <Link to="/podcast" style={linkStyle}>Podcasts</Link>
-        </li>
-        <li style={listItemStyle}>
-          <Link to="/games/higherlower" style={linkStyle}>Juegos</Link>
-        </li>
-       
-      </ul>
-    </nav>
+    <Menu
+      mode="horizontal"
+      theme="dark"
+      style={navbarStyle}
+      defaultSelectedKeys={['home']}
+    >
+      <Menu.Item key="home">
+        <Link to="/">Home</Link>
+      </Menu.Item>
+      <Menu.Item key="artists">
+        <Link to="/artist">Artistas</Link>
+      </Menu.Item>
+      <Menu.Item key="podcasts">
+        <Link to="/podcast">Podcasts</Link>
+      </Menu.Item>
+      <Menu.Item key="games">
+        <Link to="/games">Juegos</Link>
+      </Menu.Item>
+    </Menu>
   );
 };
 
-// Estilos sencillos para la barra de navegación
+
 const navbarStyle = {
-  backgroundColor: '#333',
-  padding: '10px',
-};
-
-const listStyle = {
-  listStyleType: 'none',
-  display: 'flex',
-  justifyContent: 'space-around',
-  padding: 0,
-};
-
-const listItemStyle = {
-  margin: '0 10px',
-};
-
-const linkStyle = {
-  color: 'white',
-  textDecoration: 'none',
-  fontSize: '18px',
+  position: 'fixed', 
+  top: 0,
+  zIndex: 1,
+  width: '100%',
 };
 
 export default Navbar;
