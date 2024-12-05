@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Taylor Swift",
+        "birth_year": 1989,
+        "birth_city": "Reading, Pennsylvania, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Bad Bunny",
+        "birth_year": 1994,
+        "birth_city": "Vega Baja, Puerto Rico",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "The Weeknd",
+        "birth_year": 1990,
+        "birth_city": "Toronto, Canada",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Drake",
+        "birth_year": 1986,
+        "birth_city": "Toronto, Canada",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Peso Pluma",
+        "birth_year": 1999,
+        "birth_city": "Zapopan, Jalisco, Mexico",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Feid",
+        "birth_year": 1992,
+        "birth_city": "Medellín, Colombia",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Karol G",
+        "birth_year": 1991,
+        "birth_city": "Medellín, Colombia",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "SZA",
+        "birth_year": 1989,
+        "birth_city": "St. Louis, Missouri, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Kanye West",
+        "birth_year": 1977,
+        "birth_city": "Atlanta, Georgia, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Lana Del Rey",
+        "birth_year": 1985,
+        "birth_city": "New York City, New York, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Ed Sheeran",
+        "birth_year": 1991,
+        "birth_city": "Halifax, England",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Billie Eilish",
+        "birth_year": 2001,
+        "birth_city": "Los Angeles, California, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Ariana Grande",
+        "birth_year": 1993,
+        "birth_city": "Boca Raton, Florida, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Justin Bieber",
+        "birth_year": 1994,
+        "birth_city": "London, Ontario, Canada",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Arijit Singh",
+        "birth_year": 1987,
+        "birth_city": "Madhyamgram, India",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Eminem",
+        "birth_year": 1972,
+        "birth_city": "St. Joseph, Missouri, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Shakira",
+        "birth_year": 1977,
+        "birth_city": "Barranquilla, Colombia",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Travis Scott",
+        "birth_year": 1992,
+        "birth_city": "Houston, Texas, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Kendrick Lamar",
+        "birth_year": 1987,
+        "birth_city": "Compton, California, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    },
+    {
+        "name": "Post Malone",
+        "birth_year": 1995,
+        "birth_city": "Syracuse, New York, USA",
+        "image_url": "https://m.media-amazon.com/images/I/31B2Nyzd8XL.png"
+    }
+]
