@@ -36,3 +36,23 @@ export const fetchArtistDetail = async (artistId) => {
       followers: data.followers.total, 
     };
   };
+  
+  export const fetchRandomArtists = async () => {
+    const accessToken = await getAccessToken();
+  
+    const response = await fetch(`https://api.spotify.com/v1/me/top/artists?limit=6`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+      },
+    });
+  
+    const data = await response.json();
+    const artists = data.items.map((artist) => ({
+      id: artist.id,
+      name: artist.name,
+      imageUrl: artist.images[0]?.url || "", 
+    }));
+  
+    return artists;
+};
