@@ -1,5 +1,6 @@
 // ArtistCatalog.jsx
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchArtists } from '../hooks/useArtist';
 
 const ArtistCatalog = () => {
@@ -36,8 +37,10 @@ const ArtistCatalog = () => {
           {artists.length > 0 ? (
             artists.map((artist) => (
               <div key={artist.id}>
-                <img src={artist.images[0]?.url} alt={artist.name} width={100} />
-                <p>{artist.name}</p>
+                <Link to={`/artist/${artist.id}`}>
+                  <img src={artist.images[0]?.url} alt={artist.name} width={100} />
+                  <p>{artist.name}</p>
+                </Link>
               </div>
             ))
           ) : (
