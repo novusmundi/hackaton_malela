@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card, Row, Col, Typography, Spin, Alert, notification } from 'antd';
+import { Card, Row, Col, Typography,Spin, Alert } from 'antd';
 import useRandomArtists from '../hooks/userRandomArtist';
 
 const { Title, Text } = Typography;
@@ -26,19 +26,15 @@ const RandomArtistGame = () => {
       setResult('¡Correcto!');
       setScore(score + 1);
     } else {
-     
-      notification.error({
-        message: '¡Has perdido!',
-        description: `La respuesta correcta era ${correctAnswer.name}. Tu puntuación final es: ${score}`,
-        duration: 0, 
-        onClose: () => {
-      
-          setScore(0);
-          setResult(null);
-          refetch();
-        },
-      });
+      setResult(`¡Incorrecto! La respuesta correcta era ${correctAnswer.name}`);
+      setScore(0); 
     }
+
+
+    setTimeout(() => {
+      refetch();
+      setResult(null);
+    }, 2000); 
   };
 
   if (loading) {
@@ -72,9 +68,9 @@ const RandomArtistGame = () => {
               >
                 <Card.Meta
                   title={firstArtist.name}
-          
-                />
             
+                />
+              
               </Card>
             </Col>
 
@@ -86,9 +82,9 @@ const RandomArtistGame = () => {
               >
                 <Card.Meta
                   title={secondArtist.name}
-               
-                />
             
+                />
+             
               </Card>
             </Col>
           </>
@@ -99,17 +95,17 @@ const RandomArtistGame = () => {
         <div style={resultStyle}>
           <Alert
             message={result}
-            type={result.includes('Correcto') ? 'success' : 'info'}
+            type={result.includes('Correcto') ? 'success' : 'error'}
             showIcon
           />
-          <Text strong>Puntuación {score}</Text>
+          <Text strong>Puntaje: {score}</Text>
         </div>
       )}
     </div>
   );
 };
 
-
+// Estilos personalizados
 const gameStyle = {
   textAlign: 'center',
   padding: '20px',
@@ -123,7 +119,7 @@ const artistRowStyle = {
 
 const imageStyle = {
   width: '100%',
-  height: '200px',
+  height: 'auto',
   objectFit: 'cover',
 };
 
