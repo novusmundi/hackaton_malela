@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import useArtistsWithSongs from '../hooks/useArtisWithSong';
+
 const GuessSongTitleGame = () => {
-    const { artist, song, loading, error, fetchNewSong } = useArtistsWithSongs(); 
+    const { artist, song, loading, error, fetchNewArtistAndSong } = useArtistsWithSongs(); 
   
     const [guessedTitle, setGuessedTitle] = useState('');
     const [maskedTitle, setMaskedTitle] = useState('');
@@ -10,24 +11,13 @@ const GuessSongTitleGame = () => {
   
     useEffect(() => {
       if (song) {
-       
+     
         const titleLength = song.name.length;
-        const visiblePart = song.name.slice(0, Math.ceil(titleLength / 2)); 
-        const hiddenPart = song.name.slice(Math.ceil(titleLength / 2)); 
-   
-        const mixedTitleArray = [
-          ...visiblePart.split(''), 
-          ...hiddenPart.split('').map(() => '_') 
-        ];
+        const visiblePart = song.name.slice(0, Math.ceil(titleLength / 2));
+        const hiddenPart = song.name.slice(Math.ceil(titleLength / 2));
+        const masked = visiblePart + hiddenPart.replace(/./g, '_'); 
   
-  
-        for (let i = mixedTitleArray.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [mixedTitleArray[i], mixedTitleArray[j]] = [mixedTitleArray[j], mixedTitleArray[i]]; 
-        }
-  
-
-        setMaskedTitle(mixedTitleArray.join(''));
+        setMaskedTitle(masked);
       }
     }, [song]);
   
@@ -36,14 +26,18 @@ const GuessSongTitleGame = () => {
     }
   
     if (error) {
-      return <div>{`Error: ${error.message}`}</div>;
+      return <div>{`Error: ${error}`}</div>; 
     }
   
     const handleGuess = () => {
-      if (guessedTitle.toLowerCase() === song.name.toLowerCase()) {
+     
+      const normalizedGuessedTitle = guessedTitle.replace(/\s+/g, '').toLowerCase();
+      const normalizedSongTitle = song.name.replace(/\s+/g, '').toLowerCase();
+  
+      if (normalizedGuessedTitle === normalizedSongTitle) {
         setIsCorrect(true);
         setScore(score + 1);
-        fetchNewSong(); 
+        fetchNewArtistAndSong(); 
       } else {
         setIsCorrect(false);
       }
