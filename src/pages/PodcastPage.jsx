@@ -1,52 +1,100 @@
-// PodcastPage.jsx
 import { useState } from 'react';
+import { Input, Card, Typography, Row, Col } from 'antd'; 
+import { Link } from 'react-router-dom';
 import usePodcasts from '../hooks/useEpisodes';
-import { Link } from 'react-router-dom'; 
+
+const { Search } = Input;
+const { Title, Text } = Typography;
+
 const PodcastPage = () => {
   const [query, setQuery] = useState('');
-  const { podcasts, loading, error } = usePodcasts(query);
+  const { podcasts, loading,  } = usePodcasts(query);
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
 
   return (
-    <div>
-      <h1>Buscar Podcasts</h1>
-      <input
-        type="text"
+    <div style={containerStyle}>
+      <Title level={2} style={titleStyle}>Buscar Podcasts</Title>
+      <Search
         placeholder="Busca un podcast"
+        enterButton="Buscar"
+        size="large"
         value={query}
         onChange={handleInputChange}
+        style={searchStyle}
       />
+{/* 
+      {loading && (
+        <div style={spinnerStyle}>
+          <Spin size="large" />
+        </div>
+      )}
+      {error && <Text type="danger">{error}</Text>} */}
 
-      {loading && <p>Cargando podcasts...</p>}
-      {error && <p>{error}</p>}
-
-      <div>
+      <div style={gridStyle}>
         {podcasts.length > 0 ? (
-          <ul>
+          <Row gutter={[16, 16]}>
             {podcasts.map((podcast) => (
-              <div key={podcast.id}>
-                <h3>{podcast.name}</h3>
-                {podcast.images && podcast.images[0] && (
-                  <img
-                    src={podcast.images[0].url}
-                    alt={podcast.name}
-                    style={{ width: '150px', height: '150px' }}
-                  />
-                )}
-                <br />
-                <Link to={`/podcast/${podcast.id}`}>Ver detalles</Link>
-              </div>
+              <Col key={podcast.id} xs={24} sm={12} md={8} lg={6}>
+                <Link to={`/podcast/${podcast.id}`}>
+                  <Card
+                    hoverable
+                    cover={
+                      podcast.images && podcast.images[0] ? (
+                        <img
+                          src={podcast.images[0].url}
+                          alt={podcast.name}
+                          style={cardImageStyle}
+                        />
+                      ) : null
+                    }
+                  >
+                    <Card.Meta title={podcast.name} />
+                  </Card>
+                </Link>
+              </Col>
             ))}
-          </ul>
+          </Row>
         ) : (
-          <p>No se encontraron podcasts.</p>
+          !loading && <Text>Introduce el nombre de un podcast</Text>
         )}
       </div>
     </div>
   );
+};
+
+
+const containerStyle = {
+  padding: '20px',
+  maxWidth: '1200px',
+  margin: '0 auto',
+};
+
+const titleStyle = {
+  textAlign: 'center',
+  marginBottom: '20px',
+};
+
+const searchStyle = {
+  marginBottom: '20px',
+};
+
+// const spinnerStyle = {
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   height: '200px',
+// };
+
+const gridStyle = {
+  marginTop: '20px',
+};
+
+const cardImageStyle = {
+  height: '200px',
+  objectFit: 'cover',
 };
 
 export default PodcastPage;
