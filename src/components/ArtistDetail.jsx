@@ -1,4 +1,4 @@
-// ArtistDetail.jsx
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArtistDetail } from '../hooks/useArtist';
@@ -24,9 +24,8 @@ const ArtistDetail = () => {
     <div>
       <h1>{artist.name}</h1>
       <img src={artist.images[0]?.url} alt={artist.name} width={200} />
+      <p><strong>Seguidores:</strong> {artist.followers.toLocaleString()}</p>
       <p><strong>Género:</strong> {artist.genres.join(', ')}</p>
-      <p><strong>Popularidad:</strong> {artist.popularity}</p>
-      <p>{artist.biography || 'No hay biografía disponible.'}</p>
       <a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer">Ver en Spotify</a>
     </div>
   );

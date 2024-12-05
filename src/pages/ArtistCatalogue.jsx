@@ -1,4 +1,4 @@
-// ArtistCatalog.jsx
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchArtists } from '../hooks/useArtist';
