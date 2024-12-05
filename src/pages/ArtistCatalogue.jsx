@@ -61,7 +61,7 @@ const ArtistCatalog = () => {
               </Col>
             ))
           ) : (
-            <Text>No se encontraron artistas</Text>
+            <Text>Introdcue el nombre de un artista</Text>
           )}
         </Row>
       )}
